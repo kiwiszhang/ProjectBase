@@ -13,20 +13,20 @@ typealias AlertActionBlock = (Bool) -> Void
 func showAlertView(
     title: String,
     message: String,
-    confirmButtonTitle: String = L10n.alertConfirm,
-    cancelButtonTitle: String = L10n.alertCancel,
+    confirmButtonTitle: String = "Confirm",
+    cancelButtonTitle: String = "Cancel",
     confirmButtonColor: String = "#007AFF",
     completion: @escaping AlertActionBlock
 ) {
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     
     let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel) { _ in
-        completion(false)  // Pass 'false' to indicate Cancel was tapped
+        completion(false)
     }
     alert.addAction(cancelAction)
     
     let confirmAction = UIAlertAction(title: confirmButtonTitle, style: .default) { _ in
-        completion(true)  // Pass 'true' to indicate Confirm was tapped
+        completion(true)
     }
     confirmAction.setValue(UIColor.colorWithHexString(confirmButtonColor), forKey: "titleTextColor")
     alert.addAction(confirmAction)
@@ -39,7 +39,7 @@ func showAlertView(
 func showAlertViewWithOutCancelButton(
     title: String,
     message: String,
-    confirmButtonTitle: String = L10n.alertConfirm,
+    confirmButtonTitle: String = "Confirm",
     completion: @escaping AlertActionBlock
 ) {
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
