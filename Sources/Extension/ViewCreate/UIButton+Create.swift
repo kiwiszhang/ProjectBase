@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIButton {
+    //单独每个项目写一个
     @discardableResult
     func hnFont(size: CGFloat, weight: InterWeight = .regular) -> Self {
         titleLabel?.font = UIFont.inter(size: size, weight: weight)

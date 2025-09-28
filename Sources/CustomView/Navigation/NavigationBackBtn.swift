@@ -15,7 +15,7 @@ class NavigationBackBtn: UIButton {
         return imgView
     }()
     //MARK: ----------初始化-----------
-    init(frame: CGRect, img: UIImage = UIImage(named: "nav-back-btn", obj: AnyObject?, methord: Selector?) {
+    init(frame: CGRect, img: UIImage = ProjectBaseResource.image(named: "nav-back-btn")!, obj: AnyObject?, methord: Selector?) {
         super.init(frame: frame)
         
         imgView.image = img

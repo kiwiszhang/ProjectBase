@@ -6,6 +6,7 @@
 //  Copyright © 2020 于晓杰. All rights reserved.
 //
 
+import MBProgressHUD
 import UIKit
 
 extension MBProgressHUD {

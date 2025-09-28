@@ -66,12 +66,16 @@ final class NotificationManager: NSObject {
 // MARK: - UNUserNotificationCenterDelegate
 extension NotificationManager: UNUserNotificationCenterDelegate {
     
-    /// App 在前台时收到通知
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.banner, .sound]) // iOS 14+ 支持 .banner
+        if #available(iOS 14.0, *) {
+            completionHandler([.banner, .sound])
+        } else {
+            completionHandler([.alert, .sound]) // iOS 10~13 用 .alert
+        }
     }
+
     
     /// 点击通知时回调
     func userNotificationCenter(_ center: UNUserNotificationCenter,

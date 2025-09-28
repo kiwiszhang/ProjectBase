@@ -8,15 +8,33 @@
 
 import UIKit
 
-extension UIDevice {
-    //竖屏
+/**
+ // 判断是否竖屏
+ if UIDevice.isPortrait {
+     print("竖屏中")
+ }
+
+ // 强制切换到横屏
+ UIDevice.setCurrentOrientation(.landscapeRight)
+
+ // 强制切换到竖屏
+ UIDevice.setCurrentOrientation(.portrait)
+
+ */
+
+public extension UIDevice {
+    /// 判断是否竖屏
     static var isPortrait: Bool {
-        UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isPortrait ?? true
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            return scene.interfaceOrientation.isPortrait
+        }
+        return true
     }
-    
-    class func setCurrentOrientation(orientation: UIInterfaceOrientation) {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.allowLandscapeRight = orientation == .landscapeLeft || orientation == .landscapeRight
+
+    /// 设置当前屏幕方向
+    ///
+    /// - Parameter orientation: 目标方向（例如 `.portrait`, `.landscapeRight`）
+    class func setCurrentOrientation(_ orientation: UIInterfaceOrientation) {
         UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
         UIViewController.attemptRotationToDeviceOrientation()
     }

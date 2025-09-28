@@ -78,7 +78,7 @@ extension UIImage {
             transform = transform.scaledBy(x: -1.0, y: 1.0)
         case .down:
             transform = CGAffineTransform(translationX: srcSize.width, y: srcSize.height)
-            transform = transform.scaledBy(x: 1.0, y: CGFloat(M_PI))
+            transform = transform.scaledBy(x: 1.0, y: CGFloat(CGFloat.pi))
         case .downMirrored:
             transform = CGAffineTransform(translationX: 0.0, y: srcSize.height)
             transform = transform.scaledBy(x: 1.0, y: -1.0)
@@ -86,19 +86,19 @@ extension UIImage {
             dstSize = CGSize(width: dstSize.height, height: dstSize.width)
             transform = CGAffineTransform(translationX: srcSize.height, y: srcSize.width)
             transform = transform.scaledBy(x: -1.0, y: 1.0)
-            transform = transform.rotated(by: CGFloat(3.0) * CGFloat(M_PI_2))
+            transform = transform.rotated(by: CGFloat(3.0) * CGFloat(CGFloat.pi/2))
         case .left:
             dstSize = CGSize(width: dstSize.height, height: dstSize.width)
             transform = CGAffineTransform(translationX: 0.0, y: srcSize.width)
-            transform = transform.rotated(by: CGFloat(3.0) * CGFloat(M_PI_2))
+            transform = transform.rotated(by: CGFloat(3.0) * CGFloat(CGFloat.pi/2))
         case .rightMirrored:
             dstSize = CGSize(width: dstSize.height, height: dstSize.width)
             transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
-            transform = transform.rotated(by:  CGFloat(M_PI_2))
+            transform = transform.rotated(by:  CGFloat(CGFloat.pi/2))
         default:
             dstSize = CGSize(width: dstSize.height, height: dstSize.width)
             transform = CGAffineTransform(translationX: srcSize.height, y: 0.0)
-            transform = transform.rotated(by:  CGFloat(M_PI_2))
+            transform = transform.rotated(by:  CGFloat(CGFloat.pi/2))
         }
         
         UIGraphicsBeginImageContextWithOptions(dstSize, false, scale)

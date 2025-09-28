@@ -9,8 +9,8 @@ import UIKit
 
 class EmptyView: SuperView {
     // MARK: -  =====================lazyload=========================
-    private var emptyImg = UIImageView().image(Asset.sunmaryEmpty.image).hidden(false)
-    private var emptyLab = UILabel().text(L10n.noData).hnFont(size: 16.h, weight: .regular).color(kkColorFromHex("B4BBC9")).minimumScaleFactor(0.5).centerAligned()
+    private var emptyImg = UIImageView().hidden(false)
+    private var emptyLab = UILabel().text("noData").hnFont(size: 16.h, weight: .regular).color(kkColorFromHex("B4BBC9")).minimumScaleFactor(0.5).centerAligned()
     // MARK: -  =====================Intial Methods===================
     override func setUpUI() {
         self.addChildView([emptyImg,emptyLab])
@@ -24,6 +24,7 @@ class EmptyView: SuperView {
             make.height.equalTo(20.h)
             make.top.equalTo(emptyImg.snp.bottom)
         }
+        emptyImg.image(ProjectBaseResource.image(named: "sunmary_empty"))
     }
     // MARK: -  =======================actions========================
     func refreshData(emptyImage:UIImage,emptyStr:String){
